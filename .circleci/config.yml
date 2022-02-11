@@ -5,7 +5,7 @@ jobs:
     machine: true
     steps:
       - run: echo "deploy production build"
-  deploybackend:
+  deployBackend:
     machine: true
     steps:
       - run: echo "deploy bakend"
