@@ -23,7 +23,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - 3w5-h22-tp2-backend-
+            - 3w5-h22-tp2-backend
     deploy:
       docker:
         - image: 'cimg/node:17.4.0'
