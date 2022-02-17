@@ -25,11 +25,10 @@ jobs:
           paths:
             - 3w5-h22-tp2-backend-test1
             
-      
 workflows:
   test_my_app:
     jobs:
       - test
-       - integrateFrontend:
-           requires:
-           - test
+      - integrateFrontend:
+          requires:
+            - test
