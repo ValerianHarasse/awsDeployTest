@@ -8,8 +8,8 @@ jobs:
       tag: '13.14'
     steps:
       - checkout
-      - node/test
-      - run: npm run test
+      - node/test:
+          version: 13.11.0
 workflows:
   test_my_app:
     jobs:
