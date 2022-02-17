@@ -1,17 +1,17 @@
-version: 2.1
-
+version: '2.1'
 orbs:
-  node: circleci/node@5.0.0
-
+  node: circleci/node@x.y
 jobs:
-  checkoutAndTest:
-    machine: true
+  test:
+    executor:
+      name: node/default
+      tag: '13.14'
     steps:
       - checkout
-      - node/test:
-          test-results-for: jest
-
+      - node/install-packages
+      - run:
+          command: npm run test
 workflows:
-  monWorkflow:
+  test_my_app:
     jobs:
-      - checkoutAndTest
+      - test
