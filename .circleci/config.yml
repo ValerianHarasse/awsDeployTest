@@ -1,74 +1,11 @@
-version: 2.1
-
 jobs:
-  deployProd:
+  sayhello:
+    description: A job that says Hello
     machine: true
     steps:
-      - run: echo "deploy production build"
-  deployBackend:
-    machine: true
-    steps:
-      - run: echo "deploy bakend"
-  acceptances1:
-    machine: true
-    steps:
-      - run: echo "acceptance tests 1-5"
-  checkoutAndTest:
-    docker:
-      - image: cimg/node:15.8.0
-    steps:
-      - checkout
-      - run: echo "unit tests"
-  acceptances2:
-    machine: true
-    steps:
-      - run: echo "acceptance tests 6-10"
-  acceptances3:
-    machine: true
-    steps:
-      - run: echo "acceptance tests 11-5"
-  acceptances4:
-    machine: true
-    steps:
-      - run: echo "acceptance tests 16-20"
-  deployStaging:
-    machine: true
-    steps:
-      - run: echo "deploy staging"
-  integrationTestsBackend:
-    machine: true
-    steps:
-      - run: echo "integration test backend"
+      - run: echo "Hello World!"
 
 workflows:
-  build:
+  monWorkflow:
     jobs:
-      - checkoutAndTest
-      - deployBackend:
-          requires:
-            - checkoutAndTest
-      - integrationTestsBackend:
-          requires:
-            - deployBackend
-      - deployStaging:
-          requires:
-            - integrationTestsBackend
-      - acceptances1:
-          requires:
-            - deployStaging
-      - acceptances2:
-          requires:
-            - deployStaging
-      - acceptances3:
-          requires:
-            - deployStaging
-      - acceptances4:
-          requires:
-            - deployStaging            
-      - deployProd:
-          requires:
-            - acceptances1
-            - acceptances2
-            - acceptances3
-            - acceptances4
-
+      - sayhello
