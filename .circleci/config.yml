@@ -1,13 +1,17 @@
 version: 2.1
 
+orbs:
+  eb: circleci/aws-elastic-beanstalk@2.0.1
+  node: circleci/node@5.0.0
+
 jobs:
-  sayhello:
-    description: A job that says Hello
+  checkoutAndTest:
     machine: true
     steps:
-      - run: echo "Hello World!"
+      - checkout
+      - node/test
 
 workflows:
   monWorkflow:
     jobs:
-      - sayhello
+      - checkoutAndTest
