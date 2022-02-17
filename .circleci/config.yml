@@ -23,7 +23,15 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - 3w5-h22-tp2-backend-test1
+            - 3w5-h22-tp2-backend-
+    deploy:
+      docker:
+        - image: 'cimg/node:17.4.0'
+      steps:
+        - attach_workspace:
+              at: .
+        - run: cd 3w5-h22-tp2-backend && ls -Rl
+      
             
 workflows:
   test_my_app:
