@@ -6,8 +6,7 @@ jobs:
     machine: true
     steps:
       - checkout
-      - node/test:
-          test-results-for: jest
+      
 workflows:
   test_my_app:
     jobs:
