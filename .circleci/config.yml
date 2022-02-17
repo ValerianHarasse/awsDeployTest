@@ -11,7 +11,8 @@ jobs:
       - run: npm run test
       
   integrateFrontend:
-    machine: true
+    docker:
+      - image: 'cimg/node:17.4.0'
     steps:
       - run: git clone https://github.com/ValerianHarasse/3w5-h22-tp2-backend.git
       - run: git clone https://github.com/ValerianHarasse/3w5-h22-tp2-frontend.git
@@ -28,6 +29,6 @@ workflows:
   test_my_app:
     jobs:
       - test
-      # - integrateFrontend:
-      #     requires:
-      #     - test
+       - integrateFrontend:
+           requires:
+           - test
