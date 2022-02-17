@@ -7,7 +7,8 @@ jobs:
       - image: 'cimg/base:stable'
     steps:
       - checkout
-      - node/test
+      - run: npm i
+      - run: npm run test
       
   integrateFrontend:
     machine: true
